@@ -1,3 +1,6 @@
+const inventory = require("./data/inventory.js");
+// console.log(inventory);
+
 // ⭐️ Example Challenge start ⭐️
 
 /**
@@ -58,9 +61,9 @@ function makePersonObject(id, name, email){
  * passing { id: 1, name: 'Leia', email: 'leia@leia.com` } as the argument,
  * the returned value should look like `Hello, my name is Leia`.
 */
-function getName(/* code here */) {
-  /* code here */
-}
+function getName(name){
+  return ('Hello, my name is ' + name)
+};
 
 /**
  * ### Challenge `makeSmartPerson`
@@ -180,8 +183,15 @@ function getCarInfoById(/* code here */) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * sortCarInventory returns an inventory that is sorted by car_model, ascending [A-Z].
 */
-function sortCarInventory(/* code here */) {
-  /* code here */
+function sortCarInventory(inventory) {
+  return inventory.sort( (a, b) => {
+    let compare = 0;
+    if (a.car_model > b.car_model){
+      compare = 1;
+    } else if (a.car_model < b.car_model){
+      compare = -1;
+    } return compare;
+  });
 }
 
 /**
@@ -209,8 +219,14 @@ function getModelYears(/* code here */) {
  * with a `car_year` which is at most the given desired max year,
  * in the same order as they appear in the original inventory.
 */
-function getOlderCars(/* code here */) {
-  /* code here */
+function getOlderCars(inventory, year) {
+  const oldCars = []
+  for (let i = 0; i < inventory.length; i++){
+    if (inventory[i].car_year <= year){
+      oldCars.push(inventory[i])
+    }
+  }
+  return oldCars;
 }
 
 /**
@@ -224,8 +240,17 @@ function getOlderCars(/* code here */) {
  * made by either `Audi` or `Mercedes-Benz` or `Volkswagen` or `BMW`,
  * in the same order as they appear in the original inventory.
 */
-function getGermanCars(/* code here */) {
-  /* code here */
+function getGermanCars(inventory) {
+  const getCars = []
+  for (let i = 0; i < inventory.length; i++){
+    if (inventory[i].car_make === 'Audi'||
+      inventory[i].car_make === 'Mercedes-Benz'||
+      inventory[i].car_make === 'Volkswagen'||
+      inventory[i].car_make === 'BMW'){
+      getCars.push(inventory[i])
+    }
+  }
+  return getCars
 }
 
 /**
