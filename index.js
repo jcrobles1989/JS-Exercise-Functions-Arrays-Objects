@@ -303,12 +303,22 @@ function carMaker(num) {
   const mileage = {
     odometer: num,
     drive: function(distance){
-      num + distance
-      return num;
+      return (num += distance);
     }
-  }
+  };
   return mileage;
-}
+};
+
+// let maxDistance = this.tank * this.milesPerGallon;
+//     if (distance < maxDistance) {
+//     this.odometer += distance;
+//     this.tank -= distance / this.milesPerGallon;
+//     } else if (distance >= maxDistance){
+//       this.odometer += maxDistance;
+//       this.tank -= maxDistance / this.milesPerGallon;
+//       return `I ran out of fuel at ${this.odometer}`
+//     }
+//   }
 
 /// ////// END OF CHALLENGE /////////
 /// ////// END OF CHALLENGE /////////
